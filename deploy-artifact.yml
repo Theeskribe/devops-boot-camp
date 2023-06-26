@@ -6,9 +6,9 @@
 
   tasks:
     - name: Copy file
-    copy:
-      src: /opt/jenkins/workspace/java-pipeline/target/springboot-bootcamp-0.0.1-SNAPSHOT.jar
-      dest: /home/ubuntu
+      copy:
+        src: /opt/jenkins/workspace/java-pipeline/target/springboot-bootcamp-0.0.1-SNAPSHOT.jar
+        dest: /home/ubuntu
 
     - name: Update APT package manager repositories cache
       apt:
