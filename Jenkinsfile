@@ -7,7 +7,7 @@ pipeline {
                 sh 'sudo apt-get install -y wget tree unzip maven'
             }
         }
-        stage('Compiling abd Running Test Cases'){
+        stage('Compiling and Running Test Cases'){
             steps {
                 
                 sh 'mvn clean'
@@ -25,7 +25,8 @@ pipeline {
                 sh 'wget -O sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip'
                 sh 'unzip -o -q sonar-scanner.zip'
                 sh 'sudo rm -rf /opt/sonar-scanner'
-                sh 'sudo mv --force sonar-scanner-cli-4.6.2.2472 /opt/sonar-scanner'
+                sh 'sudo mkdir -p /opt/sonar-scanner'
+                sh 'sudo mv --force sonar-scanner-4.6.2.2472 /opt/sonar-scanner'
                 sh 'sudo sh -c \'echo "#/bin/bash \nexport PATH=\\\"$PATH:/opt/sonar-scanner/bin\\\"" > /etc/profile.d/sonar-scanner.sh\''
                 sh 'chmod +x /opt/sonar-scanner/bin/sonar-scanner'
                 sh '. /etc/profile.d/conar-scanner.sh'
